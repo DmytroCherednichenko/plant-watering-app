@@ -1,0 +1,16 @@
+.my-plants-main {
+    background-color: green;
+    min-height: 100vh;
+    opacity: 30%;
+}
+
+.my-masonry-grid {
+    display: flex;
+    margin-left: -1rem;
+    width: auto;
+}
+
+.my-masonry-grid_column {
+    padding-left: 1rem;
+    background-clip: padding-box;
+}
