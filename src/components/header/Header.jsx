@@ -2,29 +2,68 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router';
+import { NavLink } from "react-router-dom";
+import './header-syles.css';
 
 function Header() {
     return (
-        <Navbar expand="md" className="bg-body-tertiary">
+        <Navbar expand="md" className="custom-navbar" fixed="top">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Brand className="brand-logo">
+                    <span className="brand-icon">🌿</span>
+                    PlantCare
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className="custom-toggle" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
+                        <Nav.Link  as={NavLink} to="/" className="nav-item-custom">
+                            <i className="bi bi-house-door"></i>
+                            Home
+                        </Nav.Link>
+                        <Nav.Link as={NavLink} to="/myplants" className="nav-item-custom">
+                            <i className="bi bi-flower1"></i>
+                            My Plants
+                        </Nav.Link>
+                        <Nav.Link as={NavLink} to="/addplant" className="nav-item-custom">
+                            <i className="bi bi-plus-circle"></i>
+                            Add Plant
+                        </Nav.Link>
+                        <NavDropdown title={
+                            <span className="dropdown-title">
+                                <i className="bi bi-gear"></i>
+                                Settings
+                            </span>
+                        } id="basic-nav-dropdown" className="custom-dropdown">
+                            <NavDropdown.Item  className="dropdown-item-custom">
+                                <i className="bi bi-person"></i>
+                                Profile
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Item className="dropdown-item-custom">
+                                <i className="bi bi-bell"></i>
+                                Notifications
+                            </NavDropdown.Item>
+                            <NavDropdown.Item className="dropdown-item-custom">
+                                <i className="bi bi-palette"></i>
+                                Theme
+                            </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
+                            <NavDropdown.Item className="dropdown-item-custom logout">
+                                <i className="bi bi-box-arrow-right"></i>
+                                Logout
                             </NavDropdown.Item>
                         </NavDropdown>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link className="nav-item-custom search-btn">
+                            <i className="bi bi-search"></i>
+                        </Nav.Link>
+                        <Nav.Link className="nav-item-custom notification-btn">
+                            <i className="bi bi-bell"></i>
+                            <span className="notification-badge">3</span>
+                        </Nav.Link>
+                        <Nav.Link as={NavLink} to="/login" className="nav-item-custom login-btn">
+                            <i class="bi bi-person-circle"></i>
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

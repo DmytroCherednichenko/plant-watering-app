@@ -12,7 +12,7 @@ const MyPlants = () => {
         700: 1
     };
     return (
-        <Container fluid className="my-plants-main" >
+        <Container fluid className="page-main-container" >
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid"

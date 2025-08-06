@@ -1,23 +1,41 @@
 .plant-card-main {
-    background-color: var(--secondary-bg-color);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     margin-top: 1rem;
     padding: 0px;
-    border-radius: 10px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.plantcard-img-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-}
-
-.plantcard-img-container {
-    object-fit: cover;
-    padding: 10px;
+.plant-card-main:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
 }
 
 .plant-card-main.container {
     padding: 0px;
+}
+
+.plantcard-img-container {
+    position: relative;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.plantcard-img-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    filter: brightness(1.05) contrast(1.1);
+}
+
+.plantcard-img-container:hover img {
+    transform: scale(1.05);
 }
 
 .plantcard-description {
@@ -25,13 +43,149 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 20px 20px 20px;
+    gap: 8px;
+}
+
+.plantcard-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin: 0;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.plantcard-latin-name {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #636e72;
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.plantcard-light,
+.plantcard-water,
+.plantcard-toxicity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2d3436;
+    margin: 2px 0;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    min-width: 140px;
+    justify-content: center;
+}
+
+.plantcard-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.plantcard-light-icon {
+    background: linear-gradient(45deg, #fdcb6e, #e17055);
+    box-shadow: 0 2px 8px rgba(253, 203, 110, 0.4);
+}
+
+.plantcard-water-icon {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    box-shadow: 0 2px 8px rgba(116, 185, 255, 0.4);
+}
+
+.plantcard-toxicity-icon {
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+    box-shadow: 0 2px 8px rgba(253, 121, 168, 0.4);
+}
+
+.water-button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
 }
 
 .watered-button {
-    background-color: #6bc6ff;
-    border: 1px solid black;
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(116, 185, 255, 0.4);
+}
 
+.watered-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(116, 185, 255, 0.6);
+    background: linear-gradient(135deg, #0984e3, #74b9ff);
+}
+
+.watered-button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .plant-card-main {
+        margin-top: 0.5rem;
+    }
+    
+    .plantcard-img-container img {
+        height: 160px;
+    }
+    
+    .plantcard-name {
+        font-size: 1.2rem;
+    }
+    
+    .water-button-container {
+        top: 16px;
+        right: 16px;
+    }
+    
+    .watered-button {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .plant-card-main {
+        background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .plantcard-name {
+        color: #ddd;
+    }
+    
+    .plantcard-latin-name {
+        color: #b2bec3;
+    }
+    
+    .plantcard-light,
+    .plantcard-water,
+    .plantcard-toxicity {
+        color: #ddd;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
 }
