@@ -1,25 +1,44 @@
-import { Container } from "react-bootstrap"
+import { Container, Button, Form } from "react-bootstrap"
+import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Context/AuthContext";
+
+
+
 import "./login.css"
 
 function Login() {
+    const navigate = useNavigate();
+    const [user, setUser] = useState("");
+    const [password, setPassword] = useState("");
+    const { login } = useContext(AuthContext);
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        if (user === 'admin' && password === '1234dima') {
+            login(user);
+            navigate('/admin');
+        } else {
+            console.log('Wrong login or password');
+        }
+    };
+
     return (
         <Container fluid className="page-main-container">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <Form onSubmit={handleLogin}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control className="form-field" type="text" placeholder="Enter username" onChange={(e)=>setUser(e.target.value)}/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control className="form-field" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/>
+                </Form.Group>
+                <Button variant="dark" type="submit">
+                    Login
+                </Button>
+            </Form>
         </Container>
     )
 }
