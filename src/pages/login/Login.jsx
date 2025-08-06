@@ -24,21 +24,25 @@ function Login() {
     };
 
     return (
-        <Container fluid className="page-main-container">
-            <Form onSubmit={handleLogin}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control className="form-field" type="text" placeholder="Enter username" onChange={(e)=>setUser(e.target.value)}/>
-                </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control className="form-field" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/>
-                </Form.Group>
-                <Button variant="dark" type="submit">
-                    Login
-                </Button>
-            </Form>
+        <Container fluid className="page-main-container">
+            <div className="form-container">
+                <h2 className="form-title">Login</h2>
+                <Form onSubmit={handleLogin}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label className="form-label required">Username</Form.Label>
+                        <Form.Control className="form-field" type="text" placeholder="Enter username" onChange={(e) => setUser(e.target.value)} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label className="form-label required">Password</Form.Label>
+                        <Form.Control className="form-field" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} />
+                    </Form.Group>
+                    <Button className="form-btn form-btn-dark" type="submit">
+                        Login
+                    </Button>
+                </Form>
+            </div>
         </Container>
     )
 }

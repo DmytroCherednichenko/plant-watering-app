@@ -1,0 +1,229 @@
+/* Universal Form Styles */
+
+/* Main form container */
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+/* Form groups spacing */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Form labels */
+.form-label, 
+.form-group .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Form fields styling */
+.form-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-field:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    background-color: #f8fff9;
+}
+
+.form-field:hover:not(:focus) {
+    border-color: #ced4da;
+}
+
+/* Placeholder styling */
+.form-field::placeholder {
+    color: #6c757d;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Form buttons */
+.form-btn {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 120px;
+}
+
+.form-btn-primary {
+    background-color: #28a745;
+    color: white;
+}
+
+.form-btn-primary:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.form-btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.form-btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.form-btn-dark {
+    background-color: #343a40;
+    color: white;
+}
+
+.form-btn-dark:hover {
+    background-color: #23272b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 58, 64, 0.3);
+}
+
+/* Button groups */
+.form-btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Error states */
+.form-field.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+
+.form-field.error:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
+/* Success states */
+.form-field.success {
+    border-color: #28a745;
+    background-color: #f8fff9;
+}
+
+/* Textarea specific styling */
+.form-field.textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Select dropdown styling */
+.form-field.select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem;
+}
+
+/* Checkbox and radio styling */
+.form-check {
+    margin-bottom: 1rem;
+}
+
+.form-check-input {
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Required field indicator */
+.form-label.required::after {
+    content: " *";
+    color: #dc3545;
+}
+
+/* Form title */
+.form-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #495057;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .form-btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .form-container {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .form-label {
+        color: #e2e8f0;
+    }
+    
+    .form-field {
+        background-color: #4a5568;
+        border-color: #718096;
+        color: #e2e8f0;
+    }
+    
+    .form-field::placeholder {
+        color: #a0aec0;
+    }
+    
+    .form-field:focus {
+        background-color: #2d3748;
+        border-color: #68d391;
+    }
+}

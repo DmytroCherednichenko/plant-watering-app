@@ -76,7 +76,7 @@ function Header() {
                             <span className="notification-badge">3</span>
                         </Nav.Link>
                         <Nav.Link as={NavLink} to="/login" className="nav-item-custom login-btn">
-                            <i class="bi bi-person-circle"></i>
+                            <i className="bi bi-person-circle"></i>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

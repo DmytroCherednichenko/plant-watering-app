@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import "../../styles/form-styles.css"; // Import the styles
 
 function AddPlant() {
     const [name, setName] = useState("");
@@ -8,33 +9,48 @@ function AddPlant() {
     
     return (
         <Container fluid className="page-main-container">
-            <Form>
-                <Form.Group>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control className="form-field" type="text" placeholder="Enter name" onChange={(e)=>setName(e.target.value)}></Form.Control>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Scientific Name</Form.Label>
-                    <Form.Control className="form-field" type="text" placeholder="Enter sci name" onChange={(e)=>setScientificName(e.target.value)}></Form.Control>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control className="form-field" type="text" placeholder="Enter description" onChange={(e)=>setDescription(e.target.value)}></Form.Control>
-                </Form.Group>
-                <Button>
-
-                </Button>
-            </Form>
+            <div className="form-container">
+                <h2 className="form-title">Add New Plant</h2>
+                <Form>
+                    <Form.Group className="form-group">
+                        <Form.Label className="form-label required">Name</Form.Label>
+                        <Form.Control 
+                            className="form-field" 
+                            type="text" 
+                            placeholder="Enter plant name" 
+                            onChange={(e)=>setName(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group className="form-group">
+                        <Form.Label className="form-label">Scientific Name</Form.Label>
+                        <Form.Control 
+                            className="form-field" 
+                            type="text" 
+                            placeholder="Enter scientific name" 
+                            onChange={(e)=>setScientificName(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group className="form-group">
+                        <Form.Label className="form-label">Description</Form.Label>
+                        <Form.Control 
+                            as="textarea"
+                            className="form-field textarea" 
+                            placeholder="Enter plant description" 
+                            onChange={(e)=>setDescription(e.target.value)}
+                        />
+                    </Form.Group>
+                    <div className="form-btn-group">
+                        <Button className="form-btn form-btn-primary" type="submit">
+                            Add Plant
+                        </Button>
+                        <Button className="form-btn form-btn-secondary" type="button">
+                            Cancel
+                        </Button>
+                    </div>
+                </Form>
+            </div>
         </Container>
     )
 }
 
-export default AddPlant
-
-        // name: "Snake Plant",
-        // scientificName: "Sansevieria trifasciata",
-        // description: "A hardy plant with upright leaves. Tolerant of low light and infrequent watering.",
-        // image: snakePlantImage,
-        // light: "Low to bright indirect",
-        // water: "Every 2–3 weeks",
-        // toxicity: "Toxic to pets"
+export default AddPlant;

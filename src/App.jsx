@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MyPlants />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/myplants" element={<MyPlants />} />
           <Route path="/addplant" element={<AddPlant />} />
         </Routes>
       </AuthProvider>
