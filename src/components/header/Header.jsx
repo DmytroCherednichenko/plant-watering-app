@@ -28,6 +28,10 @@ function Header() {
                             <i className="bi bi-house-door"></i>
                             Home
                         </Nav.Link>
+                        <Nav.Link as={NavLink} to="/collection" className="nav-item-custom">
+                            <i className="bi bi-collection"></i>
+                            Collection
+                        </Nav.Link>
                         <Nav.Link as={NavLink} to="/myplants" className="nav-item-custom">
                             <i className="bi bi-flower1"></i>
                             My Plants
@@ -60,11 +64,18 @@ function Header() {
                                 <i className="bi bi-palette"></i>
                                 Theme
                             </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item as={Button} className="dropdown-item-custom logout" onClick={() => logout()}>
-                                <i className="bi bi-box-arrow-right"></i>
-                                Logout
-                            </NavDropdown.Item>
+
+                            {
+                                isAuth && (
+                                    <>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item as={Button} className="dropdown-item-custom logout" onClick={() => logout()}>
+                                            <i className="bi bi-box-arrow-right"></i>
+                                            Logout
+                                        </NavDropdown.Item>
+                                    </>
+                                )
+                            }
                         </NavDropdown>
                     </Nav>
                     <Nav>
@@ -75,7 +86,7 @@ function Header() {
                             <i className="bi bi-bell"></i>
                             <span className="notification-badge">3</span>
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/login" className="nav-item-custom login-btn">
+                        <Nav.Link as={NavLink} to={isAuth ? "/profile" : "/login"} className="nav-item-custom login-btn">
                             <i className="bi bi-person-circle"></i>
                         </Nav.Link>
                     </Nav>

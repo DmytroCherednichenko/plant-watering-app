@@ -1,5 +1,5 @@
 import { Container, Button, Form } from "react-bootstrap"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
@@ -12,12 +12,15 @@ function Login() {
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
     const { login } = useContext(AuthContext);
+    const location = useLocation();
+
 
     const handleLogin = (e) => {
         e.preventDefault();
         if (user === 'admin' && password === '1234dima') {
             login(user);
-            navigate('/admin');
+            const from = location.state?.from?.pathname || '/dashboard';
+            navigate(from, { replace: true });
         } else {
             console.log('Wrong login or password');
         }
@@ -25,7 +28,7 @@ function Login() {
 
     return (
 
-        <Container fluid className="page-main-container">
+        <Container fluid className="main-container">
             <div className="form-container">
                 <h2 className="form-title">Login</h2>
                 <Form onSubmit={handleLogin}>

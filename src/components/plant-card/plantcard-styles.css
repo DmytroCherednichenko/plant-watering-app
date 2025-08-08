@@ -38,6 +38,105 @@
     transform: scale(1.05);
 }
 
+/* Water needed badge */
+.water-needed-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: linear-gradient(135deg, #e17055, #d63031);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    animation: pulse 2s infinite;
+    box-shadow: 0 2px 8px rgba(209, 48, 49, 0.3);
+}
+
+/* Favorite button */
+.favorite-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 20;
+}
+
+.favorite-button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.favorite-button:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+    color: #e74c3c;
+}
+
+.favorite-button.favorited {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.favorite-button.favorited:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+/* Delete button */
+.delete-button-container {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    z-index: 20;
+}
+
+.delete-button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.delete-button:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+    color: #dc3545;
+}
+
+.delete-button.confirm-delete {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
 .plantcard-description {
     display: flex;
     flex-direction: column;
@@ -82,6 +181,30 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     min-width: 140px;
     justify-content: center;
+}
+
+/* Additional info styles */
+.plantcard-last-watered,
+.plantcard-notes {
+    font-size: 0.8rem;
+    color: #636e72;
+    text-align: center;
+    margin: 4px 0;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.plantcard-notes {
+    font-style: italic;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .plantcard-icon {
@@ -136,8 +259,31 @@
     background: linear-gradient(135deg, #0984e3, #74b9ff);
 }
 
+.watered-button.needs-water {
+    background: linear-gradient(135deg, #e17055, #d63031);
+    animation: pulse 2s infinite;
+}
+
+.watered-button.needs-water:hover {
+    background: linear-gradient(135deg, #d63031, #e17055);
+    box-shadow: 0 6px 24px rgba(214, 48, 49, 0.6);
+}
+
 .watered-button:active {
     transform: scale(0.95);
+}
+
+/* Toast styling */
+.water-toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive design */
@@ -163,6 +309,23 @@
         width: 42px;
         height: 42px;
         font-size: 1rem;
+    }
+    
+    .favorite-button-container {
+        top: 16px;
+        left: 16px;
+    }
+    
+    .delete-button-container {
+        top: 56px;
+        left: 16px;
+    }
+    
+    .favorite-button,
+    .delete-button {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
     }
 }
 
